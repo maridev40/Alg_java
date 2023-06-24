@@ -138,6 +138,12 @@ public class LinkedListT<T extends Comparable<T>> {
         node_2.value = temp;
     }
 
+    public void reverse() {
+        for (int i = 0; i < size / 2; i++) {
+            this.swap(i, size - i - 1);
+        }
+    }
+
     private class Node {
         public T value;
         public Node next;

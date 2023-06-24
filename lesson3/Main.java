@@ -13,7 +13,7 @@ public class Main {
         listT.add(-3);
 
         listT.print();
-        listT.sort();
+        listT.reverse();
         listT.print();
     
     }
