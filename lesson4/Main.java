@@ -12,7 +12,7 @@ public class Main {
         tree.add(5);
         tree.remove(6);
         tree.remove(5);
-        //tree.remove(4);
+        tree.remove(4);
 
         tree.print();
     

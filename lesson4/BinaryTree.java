@@ -66,11 +66,18 @@ public class BinaryTree<T extends Comparable<T>> {
                 Node currentNode = deleteNode.right;
                 if (currentNode == null) {
                     if (deleteNode == root) {
-                        root = root.left;
-                        root.color = Color.Black;
+                        if (root.left != null) {
+                            root = root.left;
+                            root.color = Color.Black;
+                        } else
+                            root = root.left;
                         return true;
                     }
                     if (deleteNode.left == null) {
+                        if (root.left == deleteNode)
+                            root.left = deleteNode.left;
+                        else
+                            root.right = null;
                         deleteNode = null;
                         return true;
                     }
@@ -94,7 +101,7 @@ public class BinaryTree<T extends Comparable<T>> {
             }
             if (deleteNode.value.compareTo(value) > 0)
                 deleteNode = deleteNode.left;
-            else
+            else 
                 deleteNode = deleteNode.right;
         }
         return false;
@@ -169,8 +176,9 @@ public class BinaryTree<T extends Comparable<T>> {
         }
     }
     public void print() {
-
-        int maxDepth = maxDepth() + 3;
+        if (root == null)
+            return;
+        int maxDepth = maxDepth() + 2;
         int nodeCount = nodeCount(root, 0);
         int width = 50;//maxDepth * 4 + 2;
         int height = nodeCount * 5;
